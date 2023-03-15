@@ -1,0 +1,33 @@
+01 /******************************************************************************
+02 
+03 Welcome to GDB Online.
+04   GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby, 
+05   C#, OCaml, VB, Perl, Swift, Prolog, Javascript, Pascal, COBOL, HTML, CSS, JS
+06   Code, Compile, Run and Debug online from anywhere in world.
+07 
+08 *******************************************************************************/
+09 #include <stdio.h>
+10 
+11 int main() {
+12     FILE *fp;
+13     FILE *output;
+14     char c;
+15     int line_number = 1;
+16     fp = fopen(__FILE__, "r");
+17     output = fopen("main2.txt", "w");
+18     if (fp && output){
+19         fprintf(output,"%02d ", line_number);
+20         while ((c = getc(fp)) != EOF){
+21             fputc(c, output);
+22             if (c == '\n'){
+23                 line_number++;
+24                 fprintf(output,"%02d ", line_number);
+25             }
+26         }
+27         fclose(fp);
+28         fclose(output);
+29     }
+30     fprintf(output,"\n");
+31     return 0;
+32 }
+33 
